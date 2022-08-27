@@ -9,6 +9,9 @@ fetch("/api/transaction")
     // save db data on global variable
     transactions = data;
 
+    // TODO: Get items from IndexedDB store.
+    // TODO: Add those items to the transactions array.
+
     populateTotal();
     populateTable();
     populateChart();
@@ -111,7 +114,7 @@ function sendTransaction(isAdding) {
   populateChart();
   populateTable();
   populateTotal();
-  
+
   // also send to server
   fetch("/api/transaction", {
     method: "POST",
@@ -121,7 +124,7 @@ function sendTransaction(isAdding) {
       "Content-Type": "application/json"
     }
   })
-  .then(response => {    
+  .then(response => {
     return response.json();
   })
   .then(data => {
